@@ -24,11 +24,14 @@ public class EnglishStatusListener
   public void onStatus(Status status)
   {
     String tweetText = status.getText();
+    String delimiter = "\t";
     if (isEnglish(tweetText))
     {
-      String rawJSON = TwitterObjectFactory.getRawJSON(status);
-      
-      LOG.info(rawJSON + "\n");
+    	StringBuffer statusBuf = new StringBuffer(); //String buffer for effecent concat of String
+     // String rawJSON = TwitterObjectFactory.getRawJSON(status); //incase we need the whole data in json format
+     // LOG.info(rawJSON + "\n");
+    	statusBuf.append(status.getId()).append(delimiter).append(status.getText());
+    	LOG.info(statusBuf.toString());
     }
   }
   
