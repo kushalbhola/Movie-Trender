@@ -13,7 +13,10 @@ public class EnglishStatusListener
 {
   private static final transient Logger LOG = LoggerFactory.getLogger(EnglishStatusListener.class);
   
-  public void onException(Exception arg0) {}
+  public void onException(Exception arg0) {
+	  
+	  
+  }
   
   public void onDeletionNotice(StatusDeletionNotice arg0) {}
   
@@ -27,10 +30,10 @@ public class EnglishStatusListener
     String delimiter = "\t";
     if (isEnglish(tweetText))
     {
-    	StringBuffer statusBuf = new StringBuffer(); //String buffer for effecent concat of String
-     // String rawJSON = TwitterObjectFactory.getRawJSON(status); //incase we need the whole data in json format
+    	StringBuffer statusBuf = new StringBuffer(); //String buffer for efficient concatenation of String
+     // String rawJSON = TwitterObjectFactory.getRawJSON(status); //in case we need the whole data in JSON format
      // LOG.info(rawJSON + "\n");
-    	statusBuf.append(status.getId()).append(delimiter).append(status.getText());
+    	statusBuf.append(status.getId()).append(delimiter).append(status.getText().replace("/n"," ")); //update added replace function to handle new line chars 																															
     	LOG.info(statusBuf.toString());
     }
   }
